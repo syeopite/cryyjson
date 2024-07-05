@@ -75,4 +75,6 @@ lib LibYYJSON
 
   fun yyjson_arr_iter_init(arr : Val*, iter : ArrIter*) : Bool
   fun yyjson_arr_iter_next(iter : ArrIter*) : Val*
+
+  fun yyjson_doc_free(doc : Document*)
 end
