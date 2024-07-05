@@ -1,6 +1,8 @@
 # cryyjson
 
-TODO: Write a description here
+Simple crystal bindings to [yyjson](https://github.com/ibireme/yyjson)
+
+Only parsing is supported for now.
 
 ## Installation
 
@@ -9,7 +11,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      cryyjson:
-       github: your-github-user/cryyjson
+       github: syeopite/cryyjson
    ```
 
 2. Run `shards install`
@@ -18,22 +20,23 @@ TODO: Write a description here
 
 ```crystal
 require "cryyjson"
+
+data = File.read("example_data.json").gets_to_end
+json = Cryyjson.parse(data)
+
+# API is the exact same as stdlib
+typeof(json) # => JSON::Any
+
+json["key"] # => value
 ```
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/cryyjson/fork>)
+1. Fork it (<https://github.com/syeopite/cryyjson/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
-## Contributors
-
-- [syeopite](https://github.com/your-github-user) - creator and maintainer
+## Credits
+- [@ibireme](https://github.com/ibireme) - creator of [yyjson](https://github.com/ibireme/yyjson)
