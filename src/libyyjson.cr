@@ -35,6 +35,32 @@ lib LibYYJSON
     obj : Val # The object being iterated
   end
 
+  enum YYJSONType : UInt8
+    NONE
+    RAW
+    NULL
+    BOOL
+    NUM
+    STR
+    ARR
+    OBJ
+  end
+
+  enum YYJSONSubType : UInt8
+    NONE  = 0 << 3
+    FALSE = 0 << 3
+    TRUE  = 1 << 3
+    UINT  = 0 << 3
+    SINT  = 1 << 3
+    REAL  = 2 << 3
+    # NOESC
+  end
+
+  enum JSONValueMask : UInt8
+    TYPE_MASK = 0x07_u8
+    SUBTYPE_MASK = 0x18_u8
+  end
+
   fun yyjson_read_opts(dat : LibC::Char*, len : LibC::SizeT, flg : UInt32, alc : Void*, err : YYJSONReadError*) : Document*
   fun yyjson_obj_iter_init(obj : Val*, iter : ObjIter*) : Bool
   fun yyjson_obj_iter_next(iter : ObjIter*) : Val*
