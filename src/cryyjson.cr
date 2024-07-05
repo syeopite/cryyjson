@@ -13,7 +13,7 @@ module Cryyjson
 
     LibYYJSON.yyjson_doc_free(document)
 
-    return object
+    return JSON::Any.new(object)
   end
 
   private def self.parse_object(object)
