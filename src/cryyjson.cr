@@ -72,7 +72,7 @@ module Cryyjson
     when .obj?
       return self.parse_object(value_pointer)
     else
-      raise JSON::ParseException.new("Invalid type")
+      raise JSON::Error.new("Invalid type")
     end
   end
 end
