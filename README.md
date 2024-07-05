@@ -16,6 +16,8 @@ Only parsing is supported for now.
 
 2. Run `shards install`
 
+**Note: You must have cmake installed in order to build yyjson via the postinstall script**
+
 ## Usage
 
 ```crystal
