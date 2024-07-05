@@ -35,6 +35,13 @@ lib LibYYJSON
     obj : Val # The object being iterated
   end
 
+  struct ArrIter
+    idx : LibC::SizeT # Next key's index
+    max : LibC::SizeT # Max key index
+    cur : Val # Value of the next key
+    obj : Val # The object being iterated
+  end
+
   enum YYJSONType : UInt8
     NONE
     RAW
@@ -65,4 +72,7 @@ lib LibYYJSON
   fun yyjson_obj_iter_init(obj : Val*, iter : ObjIter*) : Bool
   fun yyjson_obj_iter_next(iter : ObjIter*) : Val*
   fun yyjson_obj_iter_get_val(key : Val*) : Val*
+
+  fun yyjson_arr_iter_init(arr : Val*, iter : ArrIter*) : Bool
+  fun yyjson_arr_iter_next(iter : ArrIter*) : Val*
 end
