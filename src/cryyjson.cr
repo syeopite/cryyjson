@@ -7,7 +7,7 @@ module Cryyjson
 
   # Parses some JSON string into a JSON::Any object through yyjson
   def self.parse(json) : JSON::Any
-    err = LibYYJSON::YYJSONReadError.new()
+    err = LibYYJSON::YYJSONReadError.new
     document = LibYYJSON.yyjson_read_opts(json, json.bytesize, 0_u32, nil, pointerof(err))
     object = self.parse_object(document.value.root)
 
@@ -17,7 +17,7 @@ module Cryyjson
   end
 
   private def self.parse_object(object) : Hash(String, JSON::Any)
-    iterator = LibYYJSON::ObjIter.new()
+    iterator = LibYYJSON::ObjIter.new
     LibYYJSON.yyjson_obj_iter_init(object, pointerof(iterator))
 
     json_object = {} of String => JSON::Any
@@ -34,7 +34,7 @@ module Cryyjson
   end
 
   private def self.parse_array(arr) : Array(JSON::Any)
-    iterator = LibYYJSON::ArrIter.new()
+    iterator = LibYYJSON::ArrIter.new
     LibYYJSON.yyjson_arr_iter_init(arr, pointerof(iterator))
 
     json_array = [] of JSON::Any

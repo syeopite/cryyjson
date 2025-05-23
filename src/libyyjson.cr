@@ -24,22 +24,22 @@ lib LibYYJSON
 
   struct YYJSONReadError
     code : UInt32
-    message: LibC::Char*
+    message : LibC::Char*
     pos : LibC::SizeT
   end
 
   struct ObjIter
     idx : LibC::SizeT # Next key's index
     max : LibC::SizeT # Max key index
-    cur : Val # Value of the next key
-    obj : Val # The object being iterated
+    cur : Val         # Value of the next key
+    obj : Val         # The object being iterated
   end
 
   struct ArrIter
     idx : LibC::SizeT # Next key's index
     max : LibC::SizeT # Max key index
-    cur : Val # Value of the next key
-    obj : Val # The object being iterated
+    cur : Val         # Value of the next key
+    obj : Val         # The object being iterated
   end
 
   enum YYJSONType : UInt8
@@ -64,7 +64,7 @@ lib LibYYJSON
   end
 
   enum JSONValueMask : UInt8
-    TYPE_MASK = 0x07_u8
+    TYPE_MASK    = 0x07_u8
     SUBTYPE_MASK = 0x18_u8
   end
 
