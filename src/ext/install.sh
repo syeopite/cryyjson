@@ -1,8 +1,10 @@
+#!/bin/sh
+
 git clone "https://github.com/ibireme/yyjson"
 
 cd yyjson
 
-git checkout 3367c2a9844a33b282bdfacee5f976c4c783ad50
+git checkout 9e24d6bcead647231f81173cc5c6bb6c097c00e4
 
 # Export inline functions
 cp ../yyjson_ext.c src
