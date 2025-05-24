@@ -66,14 +66,16 @@ lib LibYYJSON
   enum JSONValueMask : UInt8
     TYPE_MASK    = 0x07_u8
     SUBTYPE_MASK = 0x18_u8
+    # Number of bits used by the tag
+    TAG_BIT = 8_u8
   end
 
   fun yyjson_read_opts(dat : LibC::Char*, len : LibC::SizeT, flg : UInt32, alc : Void*, err : YYJSONReadError*) : Document*
-  fun yyjson_obj_iter_init(obj : Val*, iter : ObjIter*) : Bool
+  fun yyjson_obj_iter_with(obj : Val*) : ObjIter
   fun yyjson_obj_iter_next(iter : ObjIter*) : Val*
   fun yyjson_obj_iter_get_val(key : Val*) : Val*
 
-  fun yyjson_arr_iter_init(arr : Val*, iter : ArrIter*) : Bool
+  fun yyjson_arr_iter_with(arr : Val*) : ArrIter
   fun yyjson_arr_iter_next(iter : ArrIter*) : Val*
 
   fun yyjson_doc_free(doc : Document*)

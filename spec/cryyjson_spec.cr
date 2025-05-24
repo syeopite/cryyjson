@@ -8,8 +8,8 @@ private def it_parses(string, expected_value, file = __FILE__, line = __LINE__)
 end
 
 describe Cryyjson do
-  # TODO: Write tests
-
+  it_parses %("1"), "1"
+  it_parses "1", 1
   it_parses "{}", {} of String => JSON::Any
   it_parses %({"foo": 1}), {"foo" => 1}
   it_parses %({"foo": 1, "bar": 1.5}), {"foo" => 1, "bar" => 1.5}
@@ -24,11 +24,13 @@ describe Cryyjson do
           {"b" => "c"},
         ],
         "str" => "str",
-        "num" => 1234
+        "num" => 1234,
       },
-      "key2" => "key2"
+      "key2" => "key2",
     }
 
     Cryyjson.parse(experimental.to_json).raw.should eq(experimental)
   end
+
+  it_parses "[1,2,3,4,5]", [1, 2, 3, 4, 5]
 end
